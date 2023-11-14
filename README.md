@@ -13,6 +13,8 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
 - - **Duration:** 72 hrs.
 - - **Month** 3, **Week** 3, **Day** 2.
 
+### Author ###
+- [William Inyam](https://github.com/thecypherzen/)
 
 # Project Instructios #
 ### Monty byte code files ###
