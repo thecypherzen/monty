@@ -16,4 +16,5 @@ void monty_pall(stack_t **stack, u_int lineno)
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
+	(void)lineno;
 }

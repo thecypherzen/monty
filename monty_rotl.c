@@ -28,4 +28,5 @@ void monty_rotl(stack_t **stack, u_int lineno)
 		head->prev = NULL;
 		*stack = head;
 	}
+	(void)lineno;
 }
