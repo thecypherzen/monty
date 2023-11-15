@@ -13,7 +13,6 @@
  */
 void monty_pint(stack_t **stack, u_int lineno)
 {
-	printf("monty_pint called on line %u\n", lineno);
 	if (*stack)
 		printf("%d\n", (*stack)->n);
 	else

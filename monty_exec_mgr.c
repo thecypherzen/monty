@@ -1,19 +1,25 @@
 #include "monty.h"
 
+/**
+ * monty_exec_mgr - manages execution of an opcode
+ * @ivectr: vector of command line
+ * @mdata: ptr to monty_data structure
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE otherwise
+ */
 int monty_exec_mgr(char **ivectr, monty_t *mdata)
 {
 	mf_type ifunc = NULL;
 	int ret, n;
 	stack_t **stack_h = (mdata->stack);
 
-	if (strcmp(ivectr[0], "queue") == 0)
-		*mdata->opmode = QUEUE, printf("modeset to %s\n", "[QUEUE]");
+	if (strcmp(ivectr[0], "nop") == 0)
+		;
+	else if (strcmp(ivectr[0], "queue") == 0)
+		*mdata->opmode = QUEUE;
 	else if (strcmp(ivectr[0], "stack") == 0)
-		*mdata->opmode = STACK, printf("modeset to %s\n", "[STACK]");
+		*mdata->opmode = STACK;
 	else
 	{
-		/*printf("opmode: %s\n", *mdata->opmode == STACK ?
-			"stack" : "queue");*/
 		ifunc = get_mfunc(ivectr[0]);
 		if (!ifunc)
 		{
@@ -34,6 +40,5 @@ int monty_exec_mgr(char **ivectr, monty_t *mdata)
 		ifunc(stack_h, *mdata->lineno);
 	}
 	/*printf("op %s exec done\n\n", ivectr[0]);*/
-	printf("\n\n");
-	return (errno  == EXIT_FAILURE ? errno : 0);
+	return (errno  == EXIT_FAILURE ? errno : EXIT_SUCCESS);
 }

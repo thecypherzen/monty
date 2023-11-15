@@ -1,21 +1,15 @@
-queue
-pall
-pint
 push 1
-nop
-#rotr
-#pint
-push 2 #
-push 9
-pall
-add
-stack
-pint
-rotl
-#push 4
+push 2
+push 3
+push 4
 push 5
-mul
 push 6
-pint
-pstr
+push 7
+push 8
+push 9
+push 0
+pall
+rotr
+pall
+rotr
 pall

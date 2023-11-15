@@ -10,6 +10,7 @@
 int is_int(char *str, int *num)
 {
 	size_t i;
+
 	if (str)
 	{
 		for (i = 0; str[i]; i++)

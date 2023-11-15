@@ -11,10 +11,29 @@
  * If the top element of the stack is 0, print the error message
  * L<line_number>: division by zero, followed by a new line, and exit with
  * the status EXIT_FAILURE
+ * @stack: address of stack ptr
+ * @lineno: line number of current operation
  * Return: void
  */
 void monty_mod(stack_t **stack, u_int lineno)
 {
-	printf("monty_mod called on line %u\n", lineno);
-	(void)stack;
+	size_t len;
+	int fnum;
+
+	len = get_stacklen(*stack);
+	if (len < 2)
+	{
+		errno = EXIT_FAILURE;
+		fprintf(stderr, "L%u: can't div, stack too short\n", lineno);
+		return;
+	}
+	fnum = (*stack)->n;
+	if (!fnum)
+	{
+		errno = EXIT_FAILURE;
+		fprintf(stderr, "L%u: division by zero\n", lineno);
+		return;
+	}
+	monty_pop(stack, lineno);
+	(*stack)->n = (*stack)->n % fnum;
 }

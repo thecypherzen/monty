@@ -12,14 +12,17 @@
  */
 void monty_pop(stack_t **stack, u_int lineno)
 {
-	extern mdata;
 	stack_t *temp;
 
 	if (!(*stack))
 	{
 		errno = EXIT_FAILURE;
-		fprintf(stderr, "L%d: can't pop an empty stack", )
+		fprintf(stderr, "L%u: can't pop an empty stack\n", lineno);
+		return;
 	}
-	printf("monty_pop called on line %u\n", lineno);
-	(void)stack;
+	temp = *stack;
+	if (temp->next)
+		temp->next->prev = NULL;
+	*stack = temp->next;
+	free(temp);
 }

@@ -1,19 +1,19 @@
 #include "monty.h"
 
+/**
+ * monty_pall - prints all elements on stack
+ * @stack: address of stack ptr
+ * @lineno: line number of current operation
+ * Return: void
+ */
 void monty_pall(stack_t **stack, u_int lineno)
 {
 	stack_t *temp;
 
-	printf("\nmonty_pall called on line %u\n", lineno);
 	temp = *stack;
-	if (temp)
+	while (temp)
 	{
-		while (temp)
-		{
-			printf("%d\n", temp->n);
-			temp = temp->next;
-		}
+		printf("%d\n", temp->n);
+		temp = temp->next;
 	}
-	else
-		printf("[stack empty]\n");
 }

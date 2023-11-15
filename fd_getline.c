@@ -1,5 +1,14 @@
 #include "monty.h"
 
+/**
+ * fd_getline - custom getline that works with file descriptors
+ * instead of file streams
+ * @line: buffer to which read bytes are stored
+ * @sz: size of the buffer
+ * @fd: the file descriptor to read from
+ * Return: the number of bytes red on success, -1 on failure or
+ * end of file.
+ */
 ssize_t fd_getline(char **line, size_t *sz, int fd)
 {
 	char *buff;

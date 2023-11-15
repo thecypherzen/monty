@@ -13,10 +13,27 @@
  * 	- the value of the element is not in the ascii table
  *
  * if the stack is empty, print only a new line
+ * @stack: stack ptr address
+ * @lineno: line number of current operation
  * Return: void
  */
 void monty_pstr(stack_t **stack, u_int lineno)
 {
-	printf("monty_pstr called on line %u\n", lineno);
-	(void)stack;
+	size_t len;
+	int fnum;
+	stack_t *temp;
+
+	len = get_stacklen(*stack);
+	if (len)
+	{
+		temp = *stack;
+		while (temp)
+		{
+			fnum = temp->n;
+			if (fnum <= 0 || fnum > 127)
+				break;
+			printf("%c", temp->n);
+			temp = temp->next;
+		}
+	}
 }

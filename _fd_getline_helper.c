@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+ * _fd_getline_helper - a helper function of fd_getline.
+ * - copies from buffer to line ptr.
+ * @buff: address of ptr to buffer  - source
+ * @line: copy destination
+ * @line_sz: size of destination buffer
+ * Return: void
+ */
 ssize_t _fd_getline_helper(char **buff, char **line, size_t *line_sz)
 {
 	size_t i;
@@ -13,7 +21,7 @@ ssize_t _fd_getline_helper(char **buff, char **line, size_t *line_sz)
 			*line = realloc(*line, *line_sz);
 			if (!(*line))
 			{
-				printf("malloc failure\n");
+				fprintf(stderr, "malloc failed\n");
 				return (-1);
 			}
 		}

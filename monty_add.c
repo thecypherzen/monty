@@ -16,6 +16,16 @@
  */
 void monty_add(stack_t **stack, u_int lineno)
 {
-	printf("monty_add called on line %u\n", lineno);
-	(void)stack;
+	size_t len;
+	int fnum;
+
+	len = get_stacklen(*stack);
+	if (len < 2)
+	{
+		errno = EXIT_FAILURE;
+		fprintf(stderr, "L%u: can't add, stack too short\n", lineno);
+		return;
+	}
+	fnum = (*stack)->n, monty_pop(stack, lineno);
+	(*stack)->n = fnum + (*stack)->n;
 }

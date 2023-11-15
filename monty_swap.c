@@ -12,7 +12,22 @@
  */
 void monty_swap(stack_t **stack, u_int lineno)
 {
+	size_t len;
+	stack_t *temp;
 
-	printf("monty_pint called on line %u\n", lineno);
-	(void)stack;
+	len = get_stacklen(*stack);
+	if (len < 2)
+	{
+		errno = EXIT_FAILURE;
+		fprintf(stderr, "L%u: can't swap, stack too short\n", lineno);
+		return;
+	}
+	temp = (*stack)->next;
+	temp->prev = NULL;
+	if (temp->next)
+		temp->next->prev = *stack;
+	(*stack)->next = temp->next;
+	(*stack)->prev = temp;
+	temp->next = *stack;
+	*stack = temp;
 }

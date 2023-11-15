@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * monty_mgr - manages monty_interpreter sequence of operations
+ * @mdata: struct of monty_information
+ * Return: on success, EXIT_SUCCESS, EXIT_FAILURE otherwise.
+ */
 int monty_mgr(monty_t *mdata)
 {
 	ssize_t ret, fret = 0;
@@ -35,7 +40,6 @@ int monty_mgr(monty_t *mdata)
 			break;
 		}
 	}
-	printf("\n[* monty mgr * ] done executing file\n");
 	free(iline);
 	return (fret);
 }

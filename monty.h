@@ -22,9 +22,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+		int n;
+		struct stack_s *prev;
+		struct stack_s *next;
 } stack_t;
 
 /**
@@ -37,11 +37,19 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, u_int line_number);
+		char *opcode;
+		void (*f)(stack_t **stack, u_int line_number);
 } instruction_t;
 
 /* monty macros and custom types  */
+/**
+ * struct monty_t - monty interpreter useful data
+ * @fd: descriptor of file to read from
+ * @opmode: mode of operation. Set by macros STACK and QUEUE
+ * @stack_n: integer to be pushed to stack
+ * @lineno: line number of current command
+ * @stack: address of ptr to the monty_stack
+ */
 typedef struct monty_t
 {
 	int fd;
@@ -68,6 +76,7 @@ ssize_t fd_getline(char **, size_t *, int);
 void free_vectr(char **);
 void free_stack(stack_t *);
 mf_type get_mfunc(char *);
+size_t get_stacklen(stack_t *);
 int is_int(char *, int *);
 char **make_vectr(char *, char *);
 int monty_exec_mgr(char **, monty_t *);

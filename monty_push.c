@@ -1,12 +1,22 @@
 #include "monty.h"
 
+/**
+ * monty_push - pushes an integer to the stack or queue, as the
+ * case may be.
+ * - in stack mode, the structure is LIFO, in queue mode it's FIFO
+ * - the integer is stored in the mdata struct
+ * - if number is not an int, an error is thrown and errno is set
+ *   appropriately.
+ * @stack: ptr to stack head address
+ * @lineno: line number of current operation
+ * Return: void always.
+ */
 void monty_push(stack_t **stack, u_int lineno)
 {
 	extern monty_t mdata;
 	int *num = mdata.stack_n;
 	stack_t *temp, *new_node;
 
-	printf("monty_push called on line %u\n", lineno);
 	if (errno == ENOTINT || !num)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", lineno);
@@ -27,7 +37,6 @@ void monty_push(stack_t **stack, u_int lineno)
 	{
 		if (*mdata.opmode == STACK)
 		{
-			printf("in stack mode\n");
 			new_node->prev = NULL, new_node->next = *stack;
 			(*stack)->prev = new_node, *stack = new_node;
 		}
