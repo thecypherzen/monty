@@ -1,0 +1,6 @@
+#include "monty.h"
+
+int throw_err(int lino, *msg)
+{
+	
+}
