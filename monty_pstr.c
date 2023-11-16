@@ -19,12 +19,10 @@
  */
 void monty_pstr(stack_t **stack, u_int lineno)
 {
-	size_t len;
 	int fnum;
 	stack_t *temp;
 
-	len = get_stacklen(*stack);
-	if (len)
+	if (*stack)
 	{
 		temp = *stack;
 		while (temp)

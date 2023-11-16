@@ -98,4 +98,5 @@ void monty_rotl(stack_t **, u_int);
 void monty_rotr(stack_t **, u_int);
 void monty_sub(stack_t **, u_int);
 void monty_swap(stack_t **, u_int);
+
 #endif /* MONTY_H */
