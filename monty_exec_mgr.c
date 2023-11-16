@@ -31,7 +31,6 @@ int monty_exec_mgr(char **ivectr)
 		return (EXIT_FAILURE);
 	}
 	ret = is_int(ivectr[1], &n);
-
 	if (ret)
 		mdata.stack_n = &n;
 	else
@@ -39,5 +38,5 @@ int monty_exec_mgr(char **ivectr)
 	if (ivectr[1] && !ret)
 		errno = ENOTINT;
 	ifunc(stack_h, *mdata.lineno);
-	return (errno  == EXIT_FAILURE ? errno : EXIT_SUCCESS);
+	return (errno  == EXIT_FAILURE ? EXIT_FAILURE : EXIT_SUCCESS);
 }

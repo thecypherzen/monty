@@ -12,27 +12,24 @@ int monty_mgr(void)
 
 	while (1)
 	{
-		errno = EXIT_SUCCESS;
-		ret = fd_getline(&iline, &sz, mdata.fd);
+		errno = EXIT_SUCCESS, ret = fd_getline(&iline, &sz, mdata.fd);
 		if (ret > 0)
 		{
-			/*rm_newline_char(&iline);*/
 			*mdata.lineno = *mdata.lineno + 1;
-			if (strlen(iline) > 0)
+			rm_newline_char(&iline);
+			ivectr = make_vectr(iline, " \t");
+			if (ivectr)
 			{
-				ivectr = make_vectr(iline, " \t\n");
-				if (!ivectr)
-				{
-					errno = SIGSEGV, fret = EXIT_FAILURE;
-					break;
-				}
-				/*for (sz = 0; ivectr[sz]; sz++) */
-					/*printf("%s%s", ivectr[sz], ivectr[sz + 1] ? " " : "\n");*/
 				if (ivectr[0][0] != '#')
 					fret = monty_exec_mgr(ivectr);
 				free_vectr(ivectr);
-				if (fret != 0)
+				if (fret != EXIT_SUCCESS)
 					break;
+			}
+			else if (errno)
+			{
+				errno = SIGSEGV, fret = EXIT_FAILURE;
+				break;
 			}
 		}
 		else

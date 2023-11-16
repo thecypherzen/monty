@@ -10,15 +10,18 @@
 char **make_vectr(char *inputstr, char *delim)
 {
 	char **vectr, *str, *token;
-	int n = 0, i;
+	int n = 0, i, j;
 
-	if (!inputstr)
+	if (!inputstr || strlen(inputstr) == 0)
 		return (NULL);
 	str = str_dup(inputstr);
 	for (i = 0; str[i]; i++)
 	{
-		if (str[i] == *delim)
-			n++;
+		for (j = 0; delim[j]; j++)
+		{
+			if (str[i] == delim[j])
+				n++;
+		}
 	}
 	n += 2;
 	vectr = malloc(sizeof(char *) * (n));
