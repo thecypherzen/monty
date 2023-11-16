@@ -61,7 +61,7 @@ typedef struct monty_t
 } monty_t;
 
 typedef void (*mf_type)(stack_t **, u_int);
-monty_t mdata;
+extern monty_t mdata;
 
 #define STACK 1 /* stack mode def */
 #define QUEUE 2 /* queue mode def */
@@ -79,8 +79,8 @@ mf_type get_mfunc(char *);
 size_t get_stacklen(stack_t *);
 int is_int(char *, int *);
 char **make_vectr(char *, char *);
-int monty_exec_mgr(char **, monty_t *);
-int monty_mgr(monty_t *);
+int monty_exec_mgr(char **);
+int monty_mgr(void);
 char *str_dup(char *str);
 
 /* op functions */

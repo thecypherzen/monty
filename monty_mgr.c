@@ -2,10 +2,9 @@
 
 /**
  * monty_mgr - manages monty_interpreter sequence of operations
- * @mdata: struct of monty_information
  * Return: on success, EXIT_SUCCESS, EXIT_FAILURE otherwise.
  */
-int monty_mgr(monty_t *mdata)
+int monty_mgr(void)
 {
 	ssize_t ret, fret = 0;
 	char *iline = NULL, **ivectr = NULL;
@@ -14,11 +13,11 @@ int monty_mgr(monty_t *mdata)
 	while (1)
 	{
 		errno = EXIT_SUCCESS;
-		ret = fd_getline(&iline, &sz, mdata->fd);
+		ret = fd_getline(&iline, &sz, mdata.fd);
 		if (ret > 0)
 		{
 			iline[ret - 1] = '\0';
-			*mdata->lineno = *mdata->lineno + 1;
+			*mdata.lineno = *mdata.lineno + 1;
 			if (strlen(iline) > 0)
 			{
 				ivectr = make_vectr(iline, " ");
@@ -28,7 +27,7 @@ int monty_mgr(monty_t *mdata)
 					break;
 				}
 				if (ivectr[0][0] != '#')
-					fret = monty_exec_mgr(ivectr, mdata);
+					fret = monty_exec_mgr(ivectr);
 				free_vectr(ivectr);
 				if (fret != 0)
 					break;

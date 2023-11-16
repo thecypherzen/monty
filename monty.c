@@ -1,4 +1,6 @@
 #include "monty.h"
+void decomment(char **);
+monty_t mdata;
 /**
  * main - Entry point of mmonty
  * @argsc: cmd line arguments count
@@ -9,7 +11,6 @@ int main(int argsc, char **argsv)
 {
 	int op_mode = STACK, fd, ret;
 	stack_t *mstack = NULL;
-	extern monty_t mdata;
 	u_int lineno = 0;
 
 	if (argsc != 2)
@@ -25,7 +26,7 @@ int main(int argsc, char **argsv)
 	}
 	mdata.fd = fd, mdata.opmode = &op_mode, mdata.stack_n = NULL;
 	mdata.lineno = &lineno, mdata.stack = &mstack;
-	ret = monty_mgr(&mdata);
+	ret = monty_mgr();
 
 	close(fd), free_stack(mstack);
 	if (ret == EOF)
