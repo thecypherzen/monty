@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * s_dup - duplicates a string in memory
+ * str_dup - duplicates a string in memory
  * @str: the string
  * Return: ptr to duplicated string if successful. NULL otherwise
  */

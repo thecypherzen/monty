@@ -10,7 +10,7 @@
  * The string stops when either:
  *	- the stack is over
  *	- the value of the element is 0
- * 	- the value of the element is not in the ascii table
+ *	- the value of the element is not in the ascii table
  *
  * if the stack is empty, print only a new line
  * @stack: stack ptr address
