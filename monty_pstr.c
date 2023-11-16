@@ -29,12 +29,16 @@ void monty_pstr(stack_t **stack, u_int lineno)
 		{
 			fnum = temp->n;
 			if (fnum <= 0 || fnum > 127)
+			{
 				break;
+			}
 			printf("%c", temp->n);
 			temp = temp->next;
 		}
-		return;
+		if (!fnum && temp != *stack)
+			printf("\n");
 	}
-	printf("\n");
+	else
+		printf("\n");
 	(void)lineno;
 }
