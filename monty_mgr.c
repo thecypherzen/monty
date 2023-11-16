@@ -16,7 +16,7 @@ int monty_mgr(void)
 		ret = fd_getline(&iline, &sz, mdata.fd);
 		if (ret > 0)
 		{
-			iline[ret - 1] = '\0';
+			rm_newline_char(&iline);
 			*mdata.lineno = *mdata.lineno + 1;
 			if (strlen(iline) > 0)
 			{

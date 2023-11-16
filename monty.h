@@ -71,7 +71,7 @@ extern monty_t mdata;
 
 /* utility functions */
 ssize_t _fd_getline_helper(char **, char **, size_t *);
-void decomment(char **);
+void rm_newline_char(char **);
 ssize_t fd_getline(char **, size_t *, int);
 void free_vectr(char **);
 void free_stack(stack_t *);

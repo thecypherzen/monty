@@ -1,5 +1,5 @@
 #include "monty.h"
-void decomment(char **);
+void rm_newline_char(char **);
 monty_t mdata;
 /**
  * main - Entry point of mmonty

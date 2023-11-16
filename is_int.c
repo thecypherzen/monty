@@ -9,7 +9,7 @@
  */
 int is_int(char *str, int *num)
 {
-	size_t i;
+	size_t i, stat = 0;
 
 	if (str)
 	{
@@ -18,10 +18,10 @@ int is_int(char *str, int *num)
 			if (i == 0 && str[i] == '-')
 				continue;
 			if (str[i] < '0' || str[i] > '9')
-				return (0);
+				return (stat);
 		}
 		*num = atoi(str);
-		return (1);
+		stat = 1;
 	}
-	return (0);
+	return (stat);
 }
