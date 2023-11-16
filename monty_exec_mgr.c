@@ -34,14 +34,8 @@ int monty_exec_mgr(char **ivectr, monty_t *mdata)
 	ret = is_int(ivectr[1], &n);
 	if (ret)
 		mdata->stack_n = &n;
-	else
-		mdata->stack_n = NULL;
-	/*printf("ret = %d\n", ret);*/
 	if (ivectr[1] && !ret)
 		errno = ENOTINT;
-	/*printf("mdata.stack_n = %d\n", mdata->stack_n ?*/
-		/* *mdata->stack_n : -99); */
 	ifunc(stack_h, *mdata->lineno);
-	/*printf("op %s exec done\n\n", ivectr[0]);*/
 	return (errno  == EXIT_FAILURE ? errno : EXIT_SUCCESS);
 }

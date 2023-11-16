@@ -33,6 +33,7 @@ void monty_pstr(stack_t **stack, u_int lineno)
 			printf("%c", temp->n);
 			temp = temp->next;
 		}
+		return;
 	}
 	printf("\n");
 	(void)lineno;
