@@ -33,6 +33,8 @@ int monty_exec_mgr(char **ivectr)
 	ret = is_int(ivectr[1], &n);
 	if (ret)
 		mdata.stack_n = &n;
+	else
+		mdata.stack_n = NULL;
 	if (ivectr[1] && !ret)
 		errno = ENOTINT;
 	ifunc(stack_h, *mdata.lineno);

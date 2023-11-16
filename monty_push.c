@@ -16,7 +16,7 @@ void monty_push(stack_t **stack, u_int lineno)
 	int *num = mdata.stack_n;
 	stack_t *temp, *new_node;
 
-	if (errno == ENOTINT || !num)
+	if (errno == ENOTINT || !num || !(*num))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", lineno);
 		errno = EXIT_FAILURE;
