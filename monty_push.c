@@ -22,7 +22,6 @@ void monty_push(stack_t **stack, u_int lineno)
 		errno = EXIT_FAILURE;
 		return;
 	}
-	/*printf("opmode = %s\n", *mdata.opmode == STACK ? "STACK" "QUEUE");*/
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{

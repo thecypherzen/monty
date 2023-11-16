@@ -15,11 +15,13 @@ int is_int(char *str, int *num)
 	{
 		for (i = 0; str[i]; i++)
 		{
-			if (i == 0 && str[i] == '-')
+			if (i == 0 && (str[i] == '-' || str[i] == '+'))
 				continue;
 			if (str[i] < '0' || str[i] > '9')
 				return (stat);
 		}
+		if ((*str == '-' || *str == '+') && strlen(str) == 1)
+			return (stat);
 		*num = atoi(str);
 		stat = 1;
 	}
