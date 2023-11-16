@@ -16,11 +16,11 @@ int monty_mgr(void)
 		ret = fd_getline(&iline, &sz, mdata.fd);
 		if (ret > 0)
 		{
-			rm_newline_char(&iline);
+			/*rm_newline_char(&iline);*/
 			*mdata.lineno = *mdata.lineno + 1;
 			if (strlen(iline) > 0)
 			{
-				ivectr = make_vectr(iline, " ");
+				ivectr = make_vectr(iline, " \n\t\v");
 				if (!ivectr)
 				{
 					errno = SIGSEGV, fret = EXIT_FAILURE;

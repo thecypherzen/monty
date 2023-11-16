@@ -1,8 +1,8 @@
 push -23
-push
+push 			33
 push 23
 pall
-#push A
+push A
 push 0
 push 110
 push 0
