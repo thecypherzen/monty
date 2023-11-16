@@ -5,7 +5,7 @@
  * @str: the string
  * Return: ptr to duplicated string if successful. NULL otherwise
  */
-char *strdup(char *str)
+char *str_dup(char *str)
 {
 	char *new_str;
 	size_t len = 0;

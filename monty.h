@@ -81,7 +81,7 @@ int is_int(char *, int *);
 char **make_vectr(char *, char *);
 int monty_exec_mgr(char **, monty_t *);
 int monty_mgr(monty_t *);
-char *strdup(char *str);
+char *str_dup(char *str);
 
 /* op functions */
 void monty_add(stack_t **, u_int);
