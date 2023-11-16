@@ -31,7 +31,7 @@ void monty_pchar(stack_t **stack, u_int lineno)
 		return;
 	}
 	fnum = (*stack)->n;
-	if (fnum < 0 || fnum > 127)
+	if (fnum < 32 || fnum > 127)
 	{
 		errno = EXIT_FAILURE;
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", lineno);
