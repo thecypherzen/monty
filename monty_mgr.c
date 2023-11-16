@@ -13,21 +13,22 @@ int monty_mgr(monty_t *mdata)
 
 	while (1)
 	{
+		errno = EXIT_SUCCESS;
 		ret = fd_getline(&iline, &sz, mdata->fd);
 		if (ret > 0)
 		{
-			*mdata->lineno = *mdata->lineno + 1, decomment(&iline);
+			iline[ret - 1] = '\0';
+			*mdata->lineno = *mdata->lineno + 1;
 			if (strlen(iline) > 0)
 			{
-				/*printf("iline: %s\n", iline);*/
 				ivectr = make_vectr(iline, " ");
 				if (!ivectr)
 				{
-					/*printf("vector is null\n");*/
 					errno = SIGSEGV, fret = EXIT_FAILURE;
 					break;
 				}
-				fret = monty_exec_mgr(ivectr, mdata);
+				if (ivectr[0][0] != '#')
+					fret = monty_exec_mgr(ivectr, mdata);
 				free_vectr(ivectr);
 				if (fret != 0)
 					break;

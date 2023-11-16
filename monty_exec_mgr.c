@@ -13,32 +13,35 @@ int monty_exec_mgr(char **ivectr, monty_t *mdata)
 	stack_t **stack_h = (mdata->stack);
 
 	if (strcmp(ivectr[0], "nop") == 0)
-		;
-	else if (strcmp(ivectr[0], "queue") == 0)
-		*mdata->opmode = QUEUE;
-	else if (strcmp(ivectr[0], "stack") == 0)
-		*mdata->opmode = STACK;
-	else
+		return (EXIT_SUCCESS);
+	if (strcmp(ivectr[0], "queue") == 0)
 	{
-		ifunc = get_mfunc(ivectr[0]);
-		if (!ifunc)
-		{
-			fprintf(stderr, "L%d unknown instruction %s\n",
-					*mdata->lineno, ivectr[0]);
-			return (EXIT_FAILURE);
-		}
-		ret = is_int(ivectr[1], &n);
-		if (ret)
-			mdata->stack_n = &n;
-		else
-			mdata->stack_n = NULL;
-		/*printf("ret = %d\n", ret);*/
-		if (ivectr[1] && !ret)
-			errno = ENOTINT;
-		/*printf("mdata.stack_n = %d\n", mdata->stack_n ?
-			*mdata->stack_n : -99); */
-		ifunc(stack_h, *mdata->lineno);
+		*mdata->opmode = QUEUE;
+		return (EXIT_SUCCESS);
 	}
+	if (strcmp(ivectr[0], "stack") == 0)
+	{
+		*mdata->opmode = STACK;
+		return (EXIT_SUCCESS);
+	}
+	ifunc = get_mfunc(ivectr[0]);
+	if (!ifunc)
+	{
+		fprintf(stderr, "L%d unknown instruction %s\n",
+				*mdata->lineno, ivectr[0]);
+		return (EXIT_FAILURE);
+	}
+	ret = is_int(ivectr[1], &n);
+	if (ret)
+		mdata->stack_n = &n;
+	else
+		mdata->stack_n = NULL;
+	/*printf("ret = %d\n", ret);*/
+	if (ivectr[1] && !ret)
+		errno = ENOTINT;
+	/*printf("mdata.stack_n = %d\n", mdata->stack_n ?*/
+		/* *mdata->stack_n : -99); */
+	ifunc(stack_h, *mdata->lineno);
 	/*printf("op %s exec done\n\n", ivectr[0]);*/
 	return (errno  == EXIT_FAILURE ? errno : EXIT_SUCCESS);
 }
