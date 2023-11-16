@@ -1,6 +1,6 @@
 push -23
 push 			33
-push 23
+push \n\n\n\n\n23
 pall
 push A
 push 0

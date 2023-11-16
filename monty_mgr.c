@@ -20,12 +20,14 @@ int monty_mgr(void)
 			*mdata.lineno = *mdata.lineno + 1;
 			if (strlen(iline) > 0)
 			{
-				ivectr = make_vectr(iline, " \n");
+				ivectr = make_vectr(iline, " \t\n");
 				if (!ivectr)
 				{
 					errno = SIGSEGV, fret = EXIT_FAILURE;
 					break;
 				}
+				/*for (sz = 0; ivectr[sz]; sz++) */
+					/*printf("%s%s", ivectr[sz], ivectr[sz + 1] ? " " : "\n");*/
 				if (ivectr[0][0] != '#')
 					fret = monty_exec_mgr(ivectr);
 				free_vectr(ivectr);
