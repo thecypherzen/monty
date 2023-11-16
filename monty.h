@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
+typedef unsigned int u_int;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -59,7 +60,6 @@ typedef struct monty_t
 	stack_t **stack;
 } monty_t;
 
-typedef unsigned int u_int;
 typedef void (*mf_type)(stack_t **, u_int);
 monty_t mdata;
 
@@ -81,6 +81,7 @@ int is_int(char *, int *);
 char **make_vectr(char *, char *);
 int monty_exec_mgr(char **, monty_t *);
 int monty_mgr(monty_t *);
+char *strdup(char *str);
 
 /* op functions */
 void monty_add(stack_t **, u_int);

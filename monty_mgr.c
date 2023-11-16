@@ -21,7 +21,7 @@ int monty_mgr(monty_t *mdata)
 			*mdata->lineno = *mdata->lineno + 1;
 			if (strlen(iline) > 0)
 			{
-				ivectr = make_vectr(iline, " \t");
+				ivectr = make_vectr(iline, " ");
 				if (!ivectr)
 				{
 					errno = SIGSEGV, fret = EXIT_FAILURE;
