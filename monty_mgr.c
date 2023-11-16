@@ -20,7 +20,7 @@ int monty_mgr(void)
 			*mdata.lineno = *mdata.lineno + 1;
 			if (strlen(iline) > 0)
 			{
-				ivectr = make_vectr(iline, " \n\t\v");
+				ivectr = make_vectr(iline, " \n");
 				if (!ivectr)
 				{
 					errno = SIGSEGV, fret = EXIT_FAILURE;
