@@ -35,10 +35,7 @@ void monty_pstr(stack_t **stack, u_int lineno)
 			printf("%c", temp->n);
 			temp = temp->next;
 		}
-		if (!fnum && temp != *stack)
-			printf("\n");
 	}
-	else
-		printf("\n");
+	printf("\n");
 	(void)lineno;
 }
