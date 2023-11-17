@@ -24,7 +24,7 @@ void monty_mod(stack_t **stack, u_int lineno)
 	if (len < 2)
 	{
 		errno = EXIT_FAILURE;
-		fprintf(stderr, "L%u: can't div, stack too short\n", lineno);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", lineno);
 		return;
 	}
 	fnum = (*stack)->n;
