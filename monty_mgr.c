@@ -6,7 +6,7 @@
  */
 int monty_mgr(void)
 {
-	ssize_t ret, fret = 0;
+	ssize_t ret, fret = EXIT_SUCCESS;
 	char *iline = NULL, **ivectr = NULL;
 	size_t sz = 0;
 

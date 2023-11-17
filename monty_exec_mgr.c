@@ -26,7 +26,7 @@ int monty_exec_mgr(char **ivectr)
 	ifunc = get_mfunc(ivectr[0]);
 	if (!ifunc)
 	{
-		fprintf(stderr, "L%d unknown instruction %s\n",
+		fprintf(stderr, "L%d: unknown instruction %s\n",
 				*mdata.lineno, ivectr[0]);
 		return (EXIT_FAILURE);
 	}

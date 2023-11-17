@@ -1,5 +1,4 @@
 #include "monty.h"
-void rm_newline_char(char **);
 monty_t mdata;
 /**
  * main - Entry point of mmonty
@@ -26,12 +25,11 @@ int main(int argsc, char **argsv)
 	}
 	mdata.fd = fd, mdata.opmode = &op_mode, mdata.stack_n = NULL;
 	mdata.lineno = &lineno, mdata.stack = &mstack;
+
 	ret = monty_mgr();
+	if (ret && errno == SIGSEGV)
+		fprintf(stderr, "Error: malloc failed\n");
 
 	close(fd), free_stack(mstack);
-	if (ret == EOF)
-		printf("\n");
-	else if (errno == SIGSEGV)
-		fprintf(stderr, "Error: malloc failed\n");
 	return (ret);
 }

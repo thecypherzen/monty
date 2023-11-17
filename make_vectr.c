@@ -15,6 +15,7 @@ char **make_vectr(char *inputstr, char *delim)
 	if (!inputstr || strlen(inputstr) == 0)
 		return (NULL);
 	str = str_dup(inputstr);
+
 	for (i = 0; str[i]; i++)
 	{
 		for (j = 0; delim[j]; j++)
@@ -27,7 +28,13 @@ char **make_vectr(char *inputstr, char *delim)
 	vectr = malloc(sizeof(char *) * (n));
 	if (!vectr)
 		return (NULL);
-	vectr[--n] = NULL, token = strtok(str, delim);
+	vectr[--n] = NULL;
+	token = strtok(str, delim);
+	if (!token)
+	{
+		free(vectr), free(str);
+		return (NULL);
+	}
 	for (i = 0; i < n; i++)
 	{
 		if (!token)
